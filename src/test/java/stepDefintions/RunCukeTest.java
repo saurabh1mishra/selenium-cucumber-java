@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		plugin = {"html:target/cucumberHtmlReport"},
 		//pretty:target/cucumber-json-report.json
-		features = "classpath:features",
+		features = "src/test/resources/features",
 		glue = {"info.seleniumcucumber.stepdefinitions"}
 )
 

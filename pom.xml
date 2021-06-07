@@ -8,6 +8,10 @@
 	<packaging>jar</packaging>
 	<name>selenium-cucumber-java</name>
 
+	<properties>
+		<selenium.version>3.5.3</selenium.version>
+	</properties>
+
 	<dependencies>
 		<!-- These are the cucumber dependencies -->
 		<dependency>
@@ -34,23 +38,23 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>3.5.2</version>
+			<version>${selenium.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
-			<version>3.5.2</version>
+			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
-			<version>3.5.2</version>
+			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-remote-driver</artifactId>
-			<version>3.5.2</version>
+			<version>${selenium.version}</version>
 		</dependency>
 
 		<!-- These are the selenium-cucumber methods dependencies -->
@@ -66,7 +70,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>21.0</version>
+			<version>30.1.1-jre</version>
 		</dependency>
 	</dependencies>
 
@@ -82,17 +86,6 @@
 					<source>1.8</source>
 					<target>1.8</target>
 					<compilerArgument>-Werror</compilerArgument>
-
-					<systemPropertyVariables>
-						<property>
-							<name>browser</name>
-							<value>${browser}</value>
-						</property>
-						<property>
-							<name>cloud_config</name>
-							<value>${cloud_config}</value>
-						</property>
-					</systemPropertyVariables>
 				</configuration>
 			</plugin>
 		</plugins>

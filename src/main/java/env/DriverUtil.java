@@ -2,11 +2,7 @@ package env;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchSessionException;
-import org.openqa.selenium.SessionNotCreatedException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -28,12 +24,13 @@ public class DriverUtil {
 		if (driver != null) {
 			return driver;
 		}
-        //System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver");
         //System.setProperty("webdriver.gecko.driver", "./geckodriver");
         DesiredCapabilities capabilities = null;
 		capabilities = DesiredCapabilities.firefox();
         capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability("takesScreenshot", true);
+		capabilities.setCapability("Platform", Platform.ANY);
+		capabilities.setCapability("takesScreenshot", true);
         driver = chooseDriver(capabilities);
         driver.manage().timeouts().setScriptTimeout(DEFAULT_WAIT,
                 TimeUnit.SECONDS);
@@ -49,7 +46,7 @@ public class DriverUtil {
      * @return
      */
     private static WebDriver chooseDriver(DesiredCapabilities capabilities) {
-		String preferredDriver = System.getProperty("browser", "Firefox");
+		String preferredDriver = System.getProperty("browser", "chrome");
 		boolean headless = System.getProperty("Headless", "true").equals("true");
 		
 		switch (preferredDriver.toLowerCase()) {
